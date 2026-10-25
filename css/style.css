@@ -314,6 +314,19 @@ code, pre {
   transform: translateY(-2px);
 }
 
+.btn-green {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--accent-green);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.btn-green:hover {
+  background: var(--accent-green);
+  color: #040810;
+  box-shadow: var(--glow-green);
+  transform: translateY(-2px);
+}
+
 /* ===================================================================
    HERO SECTION
    =================================================================== */

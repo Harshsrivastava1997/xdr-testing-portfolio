@@ -531,6 +531,7 @@ function initCopyButtons() {
 // 6. CONTACT & CLIPBOARD UTILITIES
 // ===================================================================
 const PRIMARY_EMAIL = "harshvns0102@gmail.com";
+const PRIMARY_PHONE = "+91 9140686604";
 
 function showToast(message) {
   const toast = document.getElementById('toast-notify');
@@ -570,7 +571,7 @@ function fallbackCopy(text, onSuccess) {
     if (onSuccess) onSuccess();
     showToast(`Copied ${text} to clipboard!`);
   } catch (err) {
-    prompt('Copy email manually:', text);
+    prompt('Copy manually:', text);
   }
   document.body.removeChild(textArea);
 }
@@ -619,7 +620,7 @@ function initContact() {
     }
   });
 
-  // Modal Copy Button
+  // Modal Email Copy Button
   const modalCopyBtn = document.getElementById('modal-copy-btn');
   if (modalCopyBtn) {
     modalCopyBtn.addEventListener('click', () => {
@@ -631,13 +632,40 @@ function initContact() {
     });
   }
 
-  // Section Copy Button
+  // Modal Phone Copy Button
+  const modalCopyPhoneBtn = document.getElementById('modal-copy-phone-btn');
+  if (modalCopyPhoneBtn) {
+    modalCopyPhoneBtn.addEventListener('click', () => {
+      const origHtml = modalCopyPhoneBtn.innerHTML;
+      copyToClipboard(PRIMARY_PHONE, () => {
+        modalCopyPhoneBtn.innerHTML = `<span style="color:#10b981;">✓ Copied</span>`;
+        setTimeout(() => { modalCopyPhoneBtn.innerHTML = origHtml; }, 2500);
+      });
+    });
+  }
+
+  // Section Email Copy Button
   const sectionCopyBtn = document.getElementById('section-copy-email-btn');
   if (sectionCopyBtn) {
     sectionCopyBtn.addEventListener('click', () => {
       const label = sectionCopyBtn.querySelector('.btn-copy-label');
       const origText = label ? label.textContent : sectionCopyBtn.innerHTML;
       copyToClipboard(PRIMARY_EMAIL, () => {
+        if (label) label.textContent = '✓ Copied!';
+        setTimeout(() => {
+          if (label) label.textContent = origText;
+        }, 2500);
+      });
+    });
+  }
+
+  // Section Phone Copy Button
+  const sectionCopyPhoneBtn = document.getElementById('section-copy-phone-btn');
+  if (sectionCopyPhoneBtn) {
+    sectionCopyPhoneBtn.addEventListener('click', () => {
+      const label = sectionCopyPhoneBtn.querySelector('.btn-copy-phone-label');
+      const origText = label ? label.textContent : sectionCopyPhoneBtn.innerHTML;
+      copyToClipboard(PRIMARY_PHONE, () => {
         if (label) label.textContent = '✓ Copied!';
         setTimeout(() => {
           if (label) label.textContent = origText;

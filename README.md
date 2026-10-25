@@ -8,7 +8,8 @@
 
 - **Live Public URL**: **https://harshsrivastava1997.github.io/xdr-testing-portfolio/**
 - **GitHub Repository**: **https://github.com/Harshsrivastava1997/xdr-testing-portfolio**
-- **Direct Contact**: **[harshvns0102@gmail.com](mailto:harshvns0102@gmail.com)**
+- **Direct Email**: **[harshvns0102@gmail.com](mailto:harshvns0102@gmail.com)**
+- **Direct Phone / WhatsApp**: **[+91 9140686604](tel:+919140686604)** ([Chat on WhatsApp](https://wa.me/919140686604))
 
 ---
 
