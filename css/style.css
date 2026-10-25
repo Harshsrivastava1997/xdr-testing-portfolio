@@ -145,6 +145,12 @@ code, pre {
   background: rgba(59, 130, 246, 0.08);
 }
 
+.badge-purple {
+  color: var(--accent-purple);
+  border-color: rgba(139, 92, 246, 0.3);
+  background: rgba(139, 92, 246, 0.08);
+}
+
 .pulse-dot {
   width: 8px;
   height: 8px;
@@ -306,15 +312,6 @@ code, pre {
   color: #040810;
   box-shadow: var(--glow-cyan);
   transform: translateY(-2px);
-}
-
-.mobile-menu-btn {
-  display: none;
-  background: transparent;
-  border: none;
-  color: var(--text-main);
-  font-size: 1.5rem;
-  cursor: pointer;
 }
 
 /* ===================================================================
@@ -605,7 +602,7 @@ code, pre {
 }
 
 /* ===================================================================
-   INTERACTIVE SIMULATOR SECTION (Unique Interview Feature)
+   INTERACTIVE SIMULATOR SECTION
    =================================================================== */
 .simulator-container {
   background: var(--bg-card);
@@ -863,75 +860,116 @@ code, pre {
 }
 
 /* ===================================================================
-   EVIDENCE & SCREENSHOTS GALLERY
+   ARCHITECTURE & SECURITY WORKFLOW CARDS (REPLACED SCREENSHOTS)
    =================================================================== */
-.gallery-grid {
+.arch-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
-.gallery-card {
+.arch-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  overflow: hidden;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
   transition: var(--transition);
   cursor: pointer;
   display: flex;
   flex-direction: column;
-}
-
-.gallery-card:hover {
-  border-color: var(--accent-cyan);
-  transform: translateY(-4px);
-  box-shadow: var(--glow-cyan);
-}
-
-.gallery-img-wrap {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: #020617;
   position: relative;
+  overflow: hidden;
 }
 
-.gallery-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
+.arch-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), var(--glow-cyan);
 }
 
-.gallery-card:hover .gallery-img-wrap img {
-  transform: scale(1.05);
+.arch-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
 }
 
-.gallery-overlay-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid var(--border-subtle);
-  border-radius: 4px;
-  padding: 3px 8px;
-  font-size: 0.7rem;
-  font-family: var(--font-mono);
+.arch-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--accent-cyan);
 }
 
-.gallery-caption {
-  padding: 1rem;
+.arch-visual-diagram {
+  background: #040710;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
 }
 
-.gallery-caption h4 {
-  font-size: 1rem;
-  margin-bottom: 0.3rem;
+.diagram-node-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.4rem 0.65rem;
+  border-radius: 4px;
+  border-left: 2px solid var(--accent-cyan);
 }
 
-.gallery-caption p {
-  font-size: 0.82rem;
+.diagram-node-row.alert {
+  border-left-color: var(--accent-red);
+  background: rgba(239, 68, 68, 0.08);
+  color: #fca5a5;
+}
+
+.diagram-node-row.success {
+  border-left-color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.08);
+  color: #86efac;
+}
+
+.diagram-arrow {
+  text-align: center;
   color: var(--text-dim);
+  font-size: 0.7rem;
+}
+
+.arch-card h4 {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-white);
+}
+
+.arch-card p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.arch-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.8rem;
 }
 
 /* ===================================================================
@@ -1198,7 +1236,7 @@ code, pre {
 }
 
 /* ===================================================================
-   MODAL & LIGHTBOX
+   ARCHITECTURE MODAL
    =================================================================== */
 .modal-backdrop {
   position: fixed;
@@ -1223,13 +1261,13 @@ code, pre {
   background: var(--bg-card);
   border: 1px solid var(--border-accent);
   border-radius: var(--radius-lg);
-  max-width: 900px;
+  max-width: 860px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
-  padding: 2rem;
+  padding: 2.2rem;
 }
 
 .modal-close-btn {
@@ -1255,23 +1293,30 @@ code, pre {
   color: #fff;
 }
 
+.arch-step-item {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.85rem;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .hero-grid { grid-template-columns: 1fr; }
   .telemetry-grid { grid-template-columns: repeat(2, 1fr); }
   .projects-grid { grid-template-columns: 1fr; }
   .sim-display-grid { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .arch-grid { grid-template-columns: repeat(2, 1fr); }
   .skills-grid { grid-template-columns: 1fr; }
   .interview-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
   .nav-links { display: none; }
-  .mobile-menu-btn { display: block; }
   .hero-title { font-size: 2.3rem; }
   .telemetry-grid { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: 1fr; }
+  .arch-grid { grid-template-columns: 1fr; }
 }
 
 /* Print Styles */
@@ -1283,7 +1328,7 @@ code, pre {
     background: #ffffff !important;
     color: #000000 !important;
   }
-  .cyber-card, .telemetry-card, .project-card, .qa-card {
+  .cyber-card, .telemetry-card, .project-card, .qa-card, .arch-card {
     border: 1px solid #ccc !important;
     box-shadow: none !important;
     background: #fff !important;
