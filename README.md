@@ -1,6 +1,6 @@
-# Harsh Srivastava — Lead SDET | XDR & Cybersecurity Quality Engineering Portfolio
+# Harsh Srivastava — Cybersecurity Product Testing | Technical Troubleshooting | Test Automation
 
-> **Production-grade portfolio website showcasing 6+ years of Quality Engineering, Living-off-the-Land (LOLBin) Malware Detonation Engines, High-Precision Endpoint Telemetry, and Indisputable Forensic Evidence Generation across Enterprise Cybersecurity Platforms.**
+> **Production-grade portfolio website showcasing 5+ years of Quality Engineering, Living-off-the-Land (LOLBin) Malware Detonation Engines, High-Precision Endpoint Telemetry, and Indisputable Forensic Evidence Generation across Enterprise Cybersecurity Platforms.**
 
 ---
 
@@ -8,6 +8,7 @@
 
 - **Live Public URL**: **https://harshsrivastava1997.github.io/xdr-testing-portfolio/**
 - **GitHub Repository**: **https://github.com/Harshsrivastava1997/xdr-testing-portfolio**
+- **LinkedIn Profile**: **[linkedin.com/in/harsh-srivastava-896bb6167](https://linkedin.com/in/harsh-srivastava-896bb6167)**
 - **Direct Email**: **[harshvns0102@gmail.com](mailto:harshvns0102@gmail.com)**
 - **Direct Phone / WhatsApp**: **[+91 9140686604](tel:+919140686604)** ([Chat on WhatsApp](https://wa.me/919140686604))
 
@@ -81,4 +82,4 @@ When asked in interviews:
   > Discuss **Feature 4 (SIEM & Telemetry Correlation)**. Explain how you inspected distributed microservices on Linux, diagnosed an `ImportError` in active containment daemons, and resolved a datastore schema type collision that had been silently dropping telemetry.
 
 ---
-*Created for Harsh Srivastava — Lead SDET & XDR Quality Engineering Specialist.*
+*Harsh Srivastava — Cybersecurity Product Testing | Technical Troubleshooting | Test Automation.*
