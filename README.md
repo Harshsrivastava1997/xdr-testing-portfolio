@@ -8,6 +8,7 @@
 
 - **Live Public URL**: **https://harshsrivastava1997.github.io/xdr-testing-portfolio/**
 - **GitHub Repository**: **https://github.com/Harshsrivastava1997/xdr-testing-portfolio**
+- **Direct Contact**: **[harshvns0102@gmail.com](mailto:harshvns0102@gmail.com)**
 
 ---
 

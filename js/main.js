@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initArchitectureModals();
   initScrollSpy();
   initCopyButtons();
+  initContact();
 });
 
 // ===================================================================
@@ -525,3 +526,139 @@ function initCopyButtons() {
     });
   });
 }
+
+// ===================================================================
+// 6. CONTACT & CLIPBOARD UTILITIES
+// ===================================================================
+const PRIMARY_EMAIL = "harshvns0102@gmail.com";
+
+function showToast(message) {
+  const toast = document.getElementById('toast-notify');
+  const msgElem = document.getElementById('toast-message');
+  if (!toast) return;
+  if (msgElem) msgElem.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3200);
+}
+
+function copyToClipboard(text, onSuccess) {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(() => {
+      if (onSuccess) onSuccess();
+      showToast(`Copied ${text} to clipboard!`);
+    }).catch(() => {
+      fallbackCopy(text, onSuccess);
+    });
+  } else {
+    fallbackCopy(text, onSuccess);
+  }
+}
+
+function fallbackCopy(text, onSuccess) {
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.style.position = 'fixed';
+  textArea.style.left = '-9999px';
+  textArea.style.top = '-9999px';
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  try {
+    document.execCommand('copy');
+    if (onSuccess) onSuccess();
+    showToast(`Copied ${text} to clipboard!`);
+  } catch (err) {
+    prompt('Copy email manually:', text);
+  }
+  document.body.removeChild(textArea);
+}
+
+function initContact() {
+  const contactModal = document.getElementById('contact-modal');
+  const contactModalClose = document.getElementById('contact-modal-close');
+  const navContactBtn = document.getElementById('nav-contact-btn');
+  const profileEmailBadge = document.getElementById('profile-email-badge');
+
+  const openContactModal = (e) => {
+    if (e) e.preventDefault();
+    if (!contactModal) {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    contactModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeContactModal = () => {
+    if (contactModal) {
+      contactModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  };
+
+  if (navContactBtn) navContactBtn.addEventListener('click', openContactModal);
+  if (profileEmailBadge) {
+    profileEmailBadge.addEventListener('click', (e) => {
+      openContactModal(e);
+    });
+  }
+
+  if (contactModalClose) contactModalClose.addEventListener('click', closeContactModal);
+  if (contactModal) {
+    contactModal.addEventListener('click', (e) => {
+      if (e.target === contactModal) closeContactModal();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && contactModal && contactModal.classList.contains('open')) {
+      closeContactModal();
+    }
+  });
+
+  // Modal Copy Button
+  const modalCopyBtn = document.getElementById('modal-copy-btn');
+  if (modalCopyBtn) {
+    modalCopyBtn.addEventListener('click', () => {
+      const origHtml = modalCopyBtn.innerHTML;
+      copyToClipboard(PRIMARY_EMAIL, () => {
+        modalCopyBtn.innerHTML = `<span style="color:#10b981;">✓ Copied</span>`;
+        setTimeout(() => { modalCopyBtn.innerHTML = origHtml; }, 2500);
+      });
+    });
+  }
+
+  // Section Copy Button
+  const sectionCopyBtn = document.getElementById('section-copy-email-btn');
+  if (sectionCopyBtn) {
+    sectionCopyBtn.addEventListener('click', () => {
+      const label = sectionCopyBtn.querySelector('.btn-copy-label');
+      const origText = label ? label.textContent : sectionCopyBtn.innerHTML;
+      copyToClipboard(PRIMARY_EMAIL, () => {
+        if (label) label.textContent = '✓ Copied!';
+        setTimeout(() => {
+          if (label) label.textContent = origText;
+        }, 2500);
+      });
+    });
+  }
+
+  // Footer Copy Button
+  const footerCopyBtn = document.getElementById('footer-copy-email-btn');
+  if (footerCopyBtn) {
+    footerCopyBtn.addEventListener('click', () => {
+      const label = document.getElementById('footer-email-label');
+      const origText = label ? label.textContent : '';
+      copyToClipboard(PRIMARY_EMAIL, () => {
+        if (label) label.textContent = '✓ Copied to clipboard!';
+        setTimeout(() => {
+          if (label) label.textContent = PRIMARY_EMAIL;
+        }, 2500);
+      });
+    });
+  }
+}
+
